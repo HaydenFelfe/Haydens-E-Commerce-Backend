@@ -19,6 +19,14 @@ Product.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    price: {
+      type: DataTypes.DECIMAl(10, 2),
+      allowNull: false,
+    },
+    stock: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     categoryId: {
       type: DataTypes.INTEGER,
       allowNull: false,
