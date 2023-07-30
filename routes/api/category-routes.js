@@ -48,7 +48,8 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   // update a category by its `id` value
   try{
-    const updateCategory = Category.findByPk(req.params.id);
+    const categoryId = req.params.id;
+    const updateCategory = await Category.findByPk(categoryId);
     if(!updateCategory){
       res.status(404).json({ message: "Category not found!" });
       return;
@@ -65,13 +66,20 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   // delete a category by its `id` value
   try{
- const deleteCategory = Category.destroy({
-  where: {
-    id: req.params.id,
-  },
-  });
+const categoryId = req.params.id;
+const productsToUpdate = await Product.findAll({
+  where: { category_id: categoryId },
+});
+await Promise.all(
+  productsToUpdate.map((product) => {
+    return product.destroy();
+  })
+);
+const deleteCategory = await Category.destroy({
+  where: { id: categoryId },
+});
   if(!deleteCategory){
-    req.params(404).json({ message: "Category not found!" });
+    res.status(404).json({ message: "Category not found!" });
     return;
   }
   res.status(200).json(deleteCategory);
