@@ -8,6 +8,7 @@ This project is a backend server for an e-commerce website. It uses the dabase t
   - [Getting Started](#getting-started)
     - [Installation](#installation)
   - [Usage](#usage)
+  - [Walkthrough Video](#walkthrough-video)
   - [License](#license)
 
 ## Technologies Used
@@ -23,6 +24,9 @@ This project is a backend server for an e-commerce website. It uses the dabase t
 
 ## Usage
 Once you follow the installation process, you can go onto insomnia and use the different routes to be able to GET, POST, PUT, and Delete inside of the database
+
+## Walkthrough Video 
+https://drive.google.com/file/d/1IVtYLIo8pegieTJQhq9k5e5gNwWbkbFw/view
 
 ## License
 MIT License
